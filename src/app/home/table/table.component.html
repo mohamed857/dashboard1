@@ -1,0 +1,102 @@
+<div class="row justify-contenet-between m-0">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-4">
+                <button pButton label="Clear" class="btn btn-primary p-2" icon="pi pi-box">إضافة جديد <i
+                        class="pi pi-box"></i></button>
+            </div>
+            <div class="col-2">
+                <div class="border mt-1 p-1 ">
+                    <i type="button" class="bi bi-app"></i> <span class="fw-lighter p-2">|</span>
+                    <i type="button" class="pi pi-bars text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 text-end">
+        <span class="p-input-icon-right ml-auto ">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" />
+            <!-- <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" /> -->
+        </span>
+    </div>
+</div>
+<div class="card py-3 px-2">
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '20rem' }" [paginator]="true" [rows]="4" dataKey="id">
+
+        <ng-template pTemplate="header">
+            <tr class="text-center border" style="font-size: 12px;">
+                <th><i class="pi pi-globe bg-Light" style="color: #1476d7"></i></th>
+                <th>معدل البيع</th>
+                <th>الخصم</th>
+                <th>الحد الادنى</th>
+                <th>% الضريبة</th>
+                <th>التصنيف</th>
+                <th>حالة النتج</th>
+                <th>الكمية</th>
+                <th>سعر البيع</th>
+                <th>المنتجات</th>
+                <th>#</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr class="text-center border" style="font-size: 12px;">
+                <td [style]="{height: '1rem'}">
+                    <p-menu #menu [model]="cities" [popup]="true" appendTo="body"></p-menu>
+                    <i type="button" (click)="menu.toggle($event)" class="bi bi-three-dots-vertical"
+                        style="width: 10px;"></i>
+                    <!-- <i class="pi pi-ellipsis-v"></i> -->
+                    <i type="button" class="bi bi-pencil-square mx-1"></i>
+                    <i type="button" class="pi pi-eye" pTooltip="عرض المنتج" tooltipPosition="top"></i>
+                </td>
+                <td [style]="{height: '1rem'}"><img src="./assets/images/chart.png" alt=""></td>
+                <td [style]="{height: '1rem'}">{{ product.discount }}</td>
+                <td [style]="{height: '1rem'}">{{ product.minimum }} قطعة </td>
+                <td [style]="{height: '1rem'}">{{ product.tax }}</td>
+                <td [style]="{height: '1rem'}">
+                    <div class="rounded bg-light p-1">
+
+                        {{ product.Category }} <i class="bi bi-scissors"></i>
+                    </div>
+                </td>
+                @if (product.state==1) {
+                <td [style]="{height: '1rem'}">
+                    <div class="rounded bg-success-subtle text-end m-0 p-2">
+                        متوفر <i class="bi bi-check-square bg-success" style="color: aliceblue;"></i>
+                    </div>
+                </td>
+                }
+                @else if ((product.state==0)) {
+                <td [style]="{height: '1rem'}">
+                    <div class="rounded bg-danger-subtle text-end m-0 p-2">
+                        غير متوفر <i class="bi bi-exclamation-square bg-danger" style="color: aliceblue;"></i>
+                    </div>
+                </td>
+                }
+                @else if ((product.state==2)) {
+                <td [style]="{height: '1rem'}">
+                    <div class="rounded bg-warning-subtle text-end p-2">
+                        كمية اقل <i class="bi bi-arrow-down-square bg-warning" style="color: aliceblue;"></i>
+                    </div>
+                </td>
+                }
+                <td [style]="{height: '1rem'}"><span>{{ product.qun }} قطعة</span></td>
+                <td [style]="{height: '1rem'}">{{ product.price }}</td>
+                <td [style]="{height: '1rem'}">
+                    <div class="row m-0">
+                        <div class="col-md-9 text-end">
+                            <p style="font-size: 12px; margin: 0;">{{product.name}}</p>
+                            <small style="font-size: 11px; margin: 0;" class="fw-lighter">{{product.phone}}</small>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <img class="rounded-circle p-0" width="32" height="32"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN35nk_kO6zw0W8cN5nAjkCmdalysMdZThDqwj7tsr-g&s"
+                                alt="a">
+                        </div>
+                    </div>
+                </td>
+                <td [style]="{height: '1rem'}">{{ product.id }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
