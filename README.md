@@ -1,3 +1,6 @@
+
+![dashboard1](https://github.com/mohamed857/dashboard1/assets/66689511/45929b2f-8b58-45b6-a5e1-d7e0dc58be1d)
+
 # Technology
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
