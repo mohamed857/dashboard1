@@ -9,7 +9,7 @@ import { ImageModule } from 'primeng/image';
   standalone: true,
   imports: [NgApexchartsModule, ImageModule],
   templateUrl: './chart.component.html',
-  styleUrl: './chart.component.css'
+  styleUrl: './chart.component.css',
 })
 export class ChartComponent {
   public chartOptions: any;
@@ -45,76 +45,67 @@ export class ChartComponent {
       //   }
       // },
 
-
-
-        chart: {
-          height: 105,
-          type: "radialBar",
-        },
-        series: [67],
-        // colors: ["#20E647"],
-        plotOptions: {
-          radialBar: {
-            hollow: {
-                    size: '35%',
-                    margin: 0,
-                  },
+      chart: {
+        height: 105,
+        type: 'radialBar',
+      },
+      series: [67],
+      // colors: ["#20E647"],
+      plotOptions: {
+        radialBar: {
+          hollow: {
+            size: '35%',
+            margin: 0,
+          },
+          startAngle: -135,
+          endAngle: 135,
+          track: {
+            background: '#333',
             startAngle: -135,
             endAngle: 135,
-            track: {
-              background: '#333',
-              startAngle: -135,
-              endAngle: 135,
+          },
+          dataLabels: {
+            name: {
+              show: true,
+              fontSize: '10px',
             },
-            dataLabels: {
-              name: {
-                show: true,
-                fontSize: "10px",
-              },
-              value: {
-                fontSize: "10px",
-                show: false
-              }
-            }
-          }
+            value: {
+              fontSize: '10px',
+              show: false,
+            },
+          },
         },
-        fill: {
-          type: "gradient",
-          gradient: {
-            shade: "dark",
-            type: "horizontal",
-            gradientToColors: ["#87D4F9"],
-            stops: [0, 100]
-          }
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          type: 'horizontal',
+          gradientToColors: ['#87D4F9'],
+          stops: [0, 100],
         },
-        stroke: {
-          lineCap: "butt"
-        },
-        labels: ["450"]
-      };
-      ​
-      new ApexCharts(document.querySelector("#chart1"), this.chartOptions).render();
-
-
-
+      },
+      stroke: {
+        lineCap: 'butt',
+      },
+      labels: ['450'],
     };
-
+    new ApexCharts(
+      document.querySelector('#chart1'),
+      this.chartOptions
+    ).render();
   }
+}
 
-
-
-  // xaxis: {
-  //   show: false,
-  //   labels: {
-  //     show: false
-  //   },
-  //   axisBorder: {
-  //     show: false
-  //   },
-  //   axisTicks: {
-  //     show: false
-  //   }
-  // },
-
-
-
+// xaxis: {
+//   show: false,
+//   labels: {
+//     show: false
+//   },
+//   axisBorder: {
+//     show: false
+//   },
+//   axisTicks: {
+//     show: false
+//   }
+// },
